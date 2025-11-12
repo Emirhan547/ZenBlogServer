@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using ZenBlog.Application.Contracts.Persistance;
 using ZenBlog.Persistance.Concrete;
 using ZenBlog.Persistance.Context;
+using ZenBlog.Persistance.Interceptors;
 
 namespace ZenBlog.Persistance.Extensions
 {
@@ -19,6 +20,7 @@ namespace ZenBlog.Persistance.Extensions
             services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(configuration.GetConnectionString("SqlConnection"));
+                options.AddInterceptors(new AuditDbContextInterceptor());
             });
             services.AddScoped<IUnitOfWork,UnitOfWork>();
             services.AddScoped(typeof(IRepository<>),typeof(GenericRepository<>));

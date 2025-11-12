@@ -8,6 +8,6 @@ namespace ZenBlog.Application.Contracts.Persistance
 {
     public interface IUnitOfWork
     {
-        Task SaveChangesAsync();
+        Task<bool> SaveChangesAsync();
     }
 }

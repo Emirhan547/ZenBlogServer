@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace ZenBlog.Application.Base
@@ -10,7 +11,9 @@ namespace ZenBlog.Application.Base
     {
         public T? Data { get; set; }
         public IEnumerable<Error>?Errors { get; set; }
+        [JsonIgnore]
         public bool IsSuccess =>Errors==null || !Errors.Any();
+        [JsonIgnore]
         public bool IsFailure => !IsSuccess;
         public static BaseResult<T> Success(T data)
         {
