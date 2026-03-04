@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZenBlog.Application.Contracts.Persistance;
+using ZenBlog.Domain.Entities;
 using ZenBlog.Persistance.Concrete;
 using ZenBlog.Persistance.Context;
 using ZenBlog.Persistance.Interceptors;
@@ -21,7 +22,12 @@ namespace ZenBlog.Persistance.Extensions
             {
                 options.UseSqlServer(configuration.GetConnectionString("SqlConnection"));
                 options.AddInterceptors(new AuditDbContextInterceptor());
+                options.UseLazyLoadingProxies();
             });
+            services.AddIdentity<AppUser,AppRole>(options=>
+            {
+                options.User.RequireUniqueEmail=true;
+            }).AddEntityFrameworkStores<AppDbContext>();
             services.AddScoped<IUnitOfWork,UnitOfWork>();
             services.AddScoped(typeof(IRepository<>),typeof(GenericRepository<>));
         }
