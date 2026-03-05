@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,6 +40,14 @@ namespace ZenBlog.Application.Base
             {
                 Errors =(from error in errors
                          select new Error { ErrorMessage = error } ).ToList()
+            };
+        }
+        public static BaseResult<T> Fail(IEnumerable<IdentityError> errors)
+        {
+            return new BaseResult<T>
+            {
+                Errors = (from error in errors
+                          select new Error { PropertyName=error.Code,ErrorMessage = error.Description }).ToList()
             };
         }
         public static BaseResult<T>NotFound(string message)

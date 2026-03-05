@@ -15,6 +15,11 @@
     <PackageReference Include="FluentValidation" Version="12.1.0" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.0" />
     <PackageReference Include="MediatR" Version="12.5.0" />
+	  <FrameworkReference Include="Microsoft.AspNetCore.App"></FrameworkReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\Users\Queries\" />
   </ItemGroup>
 
 </Project>

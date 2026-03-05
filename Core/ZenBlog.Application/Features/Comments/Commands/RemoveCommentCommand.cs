@@ -6,9 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using ZenBlog.Application.Base;
 
-namespace ZenBlog.Application.Features.Categories.Commands
+namespace ZenBlog.Application.Features.Comments.Commands
 {
-    public record CreateCategoryCommand(string CategoryName):IRequest<BaseResult<object>>;
+    public record RemoveCommentCommand(Guid Id):IRequest<BaseResult<object>>
+    {
 
-
+    }
 }

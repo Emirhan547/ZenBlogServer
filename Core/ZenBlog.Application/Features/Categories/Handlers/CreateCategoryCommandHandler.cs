@@ -12,15 +12,15 @@ using ZenBlog.Domain.Entities;
 
 namespace ZenBlog.Application.Features.Categories.Handlers
 {
-    public class CreateCategoryCommandHandler(IRepository<Category>_repository,IUnitOfWork _unitOfWork,IMapper _mapper) : IRequestHandler<CreateCategoryCommand, BaseResult<bool>>
+    public class CreateCategoryCommandHandler(IRepository<Category>_repository,IUnitOfWork _unitOfWork,IMapper _mapper) : IRequestHandler<CreateCategoryCommand, BaseResult<object>>
     {
-        public async Task<BaseResult<bool>> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
+        public async Task<BaseResult<object>> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
         {
             var category= _mapper.Map<Category>(request);
             await _repository.CreateAsync(category);
-            var result= await _unitOfWork.SaveChangesAsync();
-            return result ? BaseResult<bool>.Success(true)
-                : BaseResult<bool>.Fail("Category coldun't be added");
+            await _unitOfWork.SaveChangesAsync();
+            return BaseResult<object>.Success(category);
+
         }
     }
 }

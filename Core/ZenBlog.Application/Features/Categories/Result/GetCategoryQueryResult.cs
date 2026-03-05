@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZenBlog.Application.Base;
+using ZenBlog.Domain.Entities;
 
-namespace ZenBlog.Application.Features.Categories.Results
+namespace ZenBlog.Application.Features.Categories.Result
 {
-    public class GetCategoryByIdQueryResult:BaseDto
+    public class GetCategoryQueryResult:BaseDto
     {
         public string CategoryName { get; set; }
         //public IList<GetBlogQueryResult> Blogs { get; set; }

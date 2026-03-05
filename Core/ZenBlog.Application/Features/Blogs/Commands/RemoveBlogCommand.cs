@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using ZenBlog.Application.Base;
 
-namespace ZenBlog.Application.Features.Categories.Commands
+namespace ZenBlog.Application.Features.Blogs.Commands
 {
-    public record CreateCategoryCommand(string CategoryName):IRequest<BaseResult<object>>;
-
-
+    public record RemoveBlogCommand(Guid Id):IRequest<BaseResult<object>>
+    {
+    }
 }
