@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using ZenBlog.Application.Base;
 using ZenBlog.Application.Contracts.Persistance;
 using ZenBlog.Application.Features.Categories.Queries;
-using ZenBlog.Application.Features.Categories.Results;
+using ZenBlog.Application.Features.Categories.Result;
 using ZenBlog.Domain.Entities;
 
 namespace ZenBlog.Application.Features.Categories.Handlers

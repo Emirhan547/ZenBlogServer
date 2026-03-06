@@ -10,9 +10,9 @@ using ZenBlog.Domain.Entities;
 
 namespace ZenBlog.Application.Features.Comments.Mappings
 {
-    public class CommandMappingProfile:Profile
+    public class CommentMappingProfile:Profile
     {
-        public CommandMappingProfile()
+        public CommentMappingProfile()
         {
             CreateMap<Comment,GetCommentsQueryResult>().ReverseMap();
             CreateMap<Comment,CreateCommentCommand>().ReverseMap();

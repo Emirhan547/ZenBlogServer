@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZenBlog.Application.Base;
-using ZenBlog.Application.Features.Categories.Results;
+using ZenBlog.Application.Features.Categories.Result;
 
 namespace ZenBlog.Application.Features.Categories.Queries
 {
