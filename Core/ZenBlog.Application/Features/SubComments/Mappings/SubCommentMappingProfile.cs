@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using ZenBlog.Application.Features.SubComments.Commands;
 using ZenBlog.Application.Features.SubComments.Result;
-using ZenBlog.Application.Features.SubComments.Results;
 using ZenBlog.Domain.Entities;
 
 namespace ZenBlog.Application.Features.SubComments.Mappings
