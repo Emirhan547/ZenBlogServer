@@ -18,8 +18,4 @@
 	  <FrameworkReference Include="Microsoft.AspNetCore.App"></FrameworkReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Users\Queries\" />
-  </ItemGroup>
-
 </Project>
