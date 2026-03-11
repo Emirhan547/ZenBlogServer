@@ -9,7 +9,7 @@ using ZenBlog.Application.Features.Messages.Result;
 
 namespace ZenBlog.Application.Features.Messages.Queries
 {
-    public record GetMessagesQuery:IRequest<BaseResult<List<GetMessagesQueryResult>>>
+    public record GetUnreadMessagesQuery:IRequest<BaseResult<List<GetUnreadMessagesQueryResult>>>
     {
     }
 }

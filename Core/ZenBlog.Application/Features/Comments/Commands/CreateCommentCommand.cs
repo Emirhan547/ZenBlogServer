@@ -12,10 +12,12 @@ namespace ZenBlog.Application.Features.Comments.Commands
 {
     public record CreateCommentCommand:IRequest<BaseResult<object>>
     {
-        public string UserId { get; set; }
-        public string Body { get; set; }
+        public string FirstName { get; init; }
+        public string LastName { get; init; }
+        public string Email { get; init; }
+        public string Body { get; init; }
         [JsonIgnore]
-        public DateTime CommentDate { get; set; }= DateTime.Now;
-        public Guid BlogId { get; set; }
+        public DateTime CommentDate { get; init; }= DateTime.Now;
+        public Guid BlogId { get; init; }
     }
 }

@@ -9,7 +9,7 @@ using ZenBlog.Application.Features.Categories.Result;
 
 namespace ZenBlog.Application.Features.Categories.Queries
 {
-    public class GetCategoryQuery:IRequest<BaseResult<List<GetCategoryQueryResult>>>
+    public record GetCategoryQuery:IRequest<BaseResult<List<GetCategoryQueryResult>>>
     {
     }
 }

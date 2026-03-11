@@ -29,6 +29,7 @@ namespace ZenBlog.Persistance.Concrete
             return await _table.AsNoTracking().ToListAsync();
         }
 
+
         public async Task<TEntity> GetByIdAsync(Guid id)
         {
             return await _table.FindAsync(id);
@@ -48,6 +49,10 @@ namespace ZenBlog.Persistance.Concrete
         {
            _context.Update(entity);
             
+        }
+        public async Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> filter)
+        {
+            return await _table.AsNoTracking().Where(filter).ToListAsync();
         }
     }
 }

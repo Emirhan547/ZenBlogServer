@@ -13,10 +13,11 @@ namespace ZenBlog.Application.Features.Comments.Validators
     {
         public CreateCommentValidator()
         {
-            RuleFor(x => x.UserId).NotEmpty().WithMessage("User is required");
+            RuleFor(x => x.FirstName).NotEmpty().WithMessage("FirstName is required");
+            RuleFor(x => x.LastName).NotEmpty().WithMessage("LastName is required");
+            RuleFor(x => x.Email).NotEmpty().WithMessage("Email is required");
             RuleFor(x => x.BlogId).NotEmpty().WithMessage("Blog is required");
             RuleFor(x => x.Body).NotEmpty().WithMessage("Message Body is required");
-           
         }
     }
 }

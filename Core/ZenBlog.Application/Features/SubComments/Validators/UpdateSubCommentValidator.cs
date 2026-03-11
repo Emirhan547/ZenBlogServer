@@ -8,9 +8,9 @@ using ZenBlog.Application.Features.SubComments.Commands;
 
 namespace ZenBlog.Application.Features.SubComments.Validators
 {
-    public class CreateSubCommentValidator:AbstractValidator<CreateSubCommentCommand>
+    public class UpdateSubCommentValidator:AbstractValidator<UpdateSubCommentCommand>
     {
-        public CreateSubCommentValidator()
+        public UpdateSubCommentValidator()
         {
             RuleFor(x => x.FirstName).NotEmpty().WithMessage("FirstName is required");
             RuleFor(x => x.LastName).NotEmpty().WithMessage("LastName is required");

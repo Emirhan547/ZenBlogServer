@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using ZenBlog.Application.Base;
 using ZenBlog.Application.Features.Categories.Result;
+using ZenBlog.Application.Features.Comments.Result;
+using ZenBlog.Application.Features.Users.Result;
 using ZenBlog.Domain.Entities;
 
 namespace ZenBlog.Application.Features.Blogs.Result
@@ -18,7 +20,7 @@ namespace ZenBlog.Application.Features.Blogs.Result
         public Guid CategoryId { get; set; }
         public GetCategoryQueryResult Category { get; set; }
         public string UserId { get; set; }
-       // public AppUser User { get; set; }
-        //public IList<Comment> Comments { get; set; }
+        public GetUsersQueryResult User { get; set; }
+        public IList<GetCommentsQueryResult> Comments { get; set; }
     }
 }

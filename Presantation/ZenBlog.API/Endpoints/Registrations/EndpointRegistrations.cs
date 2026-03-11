@@ -20,7 +20,7 @@ namespace ZenBlog.API.Registrations
             app.RegisterSubCommentEndpoints();
             app.RegisterContactInfoEndpoints();
             app.RegisterSocialEndpoints();
-            app.RegisterMessagesEndpoints();
+            app.RegisterMessageEndpoints();
         }
     }
 }

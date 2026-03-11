@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ZenBlog.Application.Base;
+﻿using ZenBlog.Application.Base;
 using ZenBlog.Application.Features.Categories.Result;
 using ZenBlog.Application.Features.Comments.Result;
 using ZenBlog.Application.Features.Users.Result;
 
-
 namespace ZenBlog.Application.Features.Blogs.Result
 {
-    public class GetBlogByIdQueryResult:BaseDto
+    public class GetLatest5BlogsQueryResult : BaseDto
     {
         public string Title { get; set; }
         public string CoverImage { get; set; }
@@ -20,7 +14,7 @@ namespace ZenBlog.Application.Features.Blogs.Result
         public Guid CategoryId { get; set; }
         public GetCategoryQueryResult Category { get; set; }
         public string UserId { get; set; }
-         public GetUsersQueryResult User { get; set; }
+        public GetUsersQueryResult User { get; set; }
         public IList<GetCommentsQueryResult> Comments { get; set; }
     }
 }

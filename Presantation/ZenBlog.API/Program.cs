@@ -1,4 +1,5 @@
 using Scalar.AspNetCore;
+using System.Text.Json.Serialization;
 using ZenBlog.API.CustomMiddlewares;
 using ZenBlog.API.Registrations;
 using ZenBlog.Application.Extensions;
@@ -9,7 +10,21 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddPersistanceServices(builder.Configuration);
+builder.Services.AddCors(opt=>
+{
+    opt.AddDefaultPolicy(cfg =>
+    {
+        cfg.WithOrigins("http://localhost:4200")
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowCredentials();
+    });
+});
 builder.Services.AddControllers();
+builder.Services.ConfigureHttpJsonOptions(config =>
+{
+    config.SerializerOptions.ReferenceHandler=ReferenceHandler.IgnoreCycles;
+});
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
@@ -23,12 +38,13 @@ if (app.Environment.IsDevelopment())
 }
 app.UseMiddleware<CustomExceptionHandlingMiddleware>();
 app.UseHttpsRedirection();
+app.UseCors();
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
 app.MapGroup("/api")
-    .RequireAuthorization()
+   .RequireAuthorization()
    .RegisterEndpoints();
 
 app.Run();

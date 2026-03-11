@@ -2,47 +2,60 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ZenBlog.Application.Features.Messages.Commands;
 using ZenBlog.Application.Features.Messages.Queries;
-using ZenBlog.Application.Features.Socials.Commands;
 
 namespace ZenBlog.Application.Features.Messages.Endpoints
 {
-    public static class MessagesEndpoints
+    public static class MessageEndpoints
     {
-        public static void RegisterMessagesEndpoints(this IEndpointRouteBuilder app)
+
+        public static void RegisterMessageEndpoints(this IEndpointRouteBuilder app)
         {
-            var contactInfos = app.MapGroup("/messages").WithTags("Messages");
-            contactInfos.MapGet("", async (IMediator _mediator) =>
+
+            var messages = app.MapGroup("/messages").WithTags("Messages");
+
+            messages.MapPost("/", async (CreateMessageCommand command, IMediator mediator) =>
             {
-                var response = await _mediator.Send(new GetMessagesQuery());
-                return response.IsSuccess ? Results.Ok(response) : Results.BadRequest(response);
+                var result = await mediator.Send(command);
+                return result.IsSuccess ? Results.Ok(result) : Results.BadRequest(result);
+            }).AllowAnonymous();
+
+            messages.MapGet("/", async (IMediator mediator) =>
+            {
+                var result = await mediator.Send(new GetMessagesQuery());
+                return result.IsSuccess ? Results.Ok(result) : Results.BadRequest(result);
             });
-            contactInfos.MapPost("",
-                async (CreateMessageCommand command, IMediator _mediator) =>
-                {
-                    var response = await _mediator.Send(command);
-                    return response.IsSuccess ? Results.Ok(response) : Results.BadRequest(response);
-                });
-            contactInfos.MapGet("{id}", async (Guid id, IMediator _mediator) =>
+
+            messages.MapGet("Unread", async (IMediator mediator) =>
             {
-                var response = await _mediator.Send(new GetMessageByIdQuery(id));
-                return response.IsSuccess ? Results.Ok(response) : Results.BadRequest(response);
+                var result = await mediator.Send(new GetUnreadMessagesQuery());
+                return result.IsSuccess ? Results.Ok(result) : Results.BadRequest(result);
             });
-            contactInfos.MapPut("", async (UpdateMessageCommand command, IMediator _mediator) =>
+
+            messages.MapGet("read", async (IMediator mediator) =>
             {
-                var response = await _mediator.Send(command);
-                return response.IsSuccess ? Results.Ok(response) : Results.BadRequest(response);
+                var result = await mediator.Send(new GetReadMessagesQuery());
+                return result.IsSuccess ? Results.Ok(result) : Results.BadRequest(result);
             });
-            contactInfos.MapDelete("{id}", async (Guid id, IMediator _mediator) =>
+
+            messages.MapGet("/{id}", async (Guid id, IMediator mediator) =>
             {
-                var response = await _mediator.Send(new RemoveMessageCommand(id));
-                return response.IsSuccess ? Results.Ok(response) : Results.BadRequest(response);
+                var result = await mediator.Send(new GetMessageByIdQuery(id));
+                return result.IsSuccess ? Results.Ok(result) : Results.BadRequest(result);
+            });
+
+            messages.MapPut("", async (UpdateMessageCommand command, IMediator mediator) =>
+            {
+
+                var result = await mediator.Send(command);
+                return result.IsSuccess ? Results.Ok(result) : Results.BadRequest(result);
+            });
+
+            messages.MapDelete("/{id}", async (Guid id, IMediator mediator) =>
+            {
+                var result = await mediator.Send(new RemoveMessageCommand(id));
+                return result.IsSuccess ? Results.Ok(result) : Results.BadRequest(result);
             });
         }
     }

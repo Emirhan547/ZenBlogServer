@@ -17,7 +17,7 @@ namespace ZenBlog.Application.Extensions
         public static void AddApplicationServices(this IServiceCollection services,IConfiguration configuration)
         {
             // Register application services, handlers, and mappings here
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddMediatR(cfg =>
             {
             cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
