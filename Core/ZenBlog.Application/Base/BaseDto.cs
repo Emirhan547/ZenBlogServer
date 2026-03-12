@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZenBlog.Application.Base
 {
-    public class BaseDto
+    public abstract class BaseDto
     {
         public Guid Id { get; set; }
         public DateTime CreatedAt { get; set; }

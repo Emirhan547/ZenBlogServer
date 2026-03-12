@@ -65,7 +65,7 @@ namespace ZenBlog.Application.Features.Blogs.Endpoints
                 {
                     var response = await mediator.Send(new GetBlogsByCategoryIdQuery(categoryId));
                     return response.IsSuccess ? Results.Ok(response) : Results.BadRequest(response);
-                });
+                }).AllowAnonymous();
         }
     }
 }
