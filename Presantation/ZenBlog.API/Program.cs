@@ -21,10 +21,7 @@ builder.Services.AddCors(opt=>
     });
 });
 builder.Services.AddControllers();
-builder.Services.ConfigureHttpJsonOptions(config =>
-{
-    config.SerializerOptions.ReferenceHandler=ReferenceHandler.IgnoreCycles;
-});
+
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 

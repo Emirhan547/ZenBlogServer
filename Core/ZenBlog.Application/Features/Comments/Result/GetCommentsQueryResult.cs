@@ -19,6 +19,6 @@ namespace ZenBlog.Application.Features.Comments.Result
         public DateTime CommentDate { get; set; }
        // public virtual IList<SubComment> SubComments { get; set; }
         public Guid BlogId { get; set; }
-        public  GetBlogsQueryResult Blog { get; set; }
+      
     }
 }

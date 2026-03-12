@@ -15,12 +15,12 @@ namespace ZenBlog.Application.Features.Blogs.Mappings
         public BlogMappingProfile()
         {
             {
-                CreateMap<Blog, GetBlogsQueryResult>().ReverseMap();
-                CreateMap<Blog, GetBlogByIdQueryResult>().ReverseMap();
+                CreateMap<Blog, GetBlogsQueryResult>();
+                CreateMap<Blog, GetBlogByIdQueryResult>();
                 CreateMap<Blog, CreateBlogCommand>().ReverseMap();
                 CreateMap<Blog, UpdateBlogCommand>().ReverseMap();
-                CreateMap<Blog, GetBlogsByCategoryIdQueryResult>().ReverseMap();
-                CreateMap<Blog, GetLatest5BlogsQueryResult>().ReverseMap();
+                CreateMap<Blog, GetBlogsByCategoryIdQueryResult>();
+                CreateMap<Blog, GetLatest5BlogsQueryResult>();
             }
         }
     }

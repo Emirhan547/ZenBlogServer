@@ -25,7 +25,7 @@ namespace ZenBlog.Persistance.Extensions
             {
                 options.UseSqlServer(configuration.GetConnectionString("SqlConnection"));
                 options.AddInterceptors(new AuditDbContextInterceptor());
-                options.UseLazyLoadingProxies();
+               
             });
             services.AddIdentity<AppUser,AppRole>(options=>
             {
